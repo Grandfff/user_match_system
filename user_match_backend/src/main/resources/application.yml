@@ -1,0 +1,49 @@
+# 公共配置文件
+spring:
+  application:
+    name: user-center-backend
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  # DataSource Config（Docker 部署时通过环境变量注入,默认值为本地开发配置）
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3306}/${MYSQL_DB:user_match_db}?useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+    username: ${MYSQL_USER:root}
+    password: ${MYSQL_PASSWORD:123456}
+  # Redis 配置（Docker 部署时通过 REDIS_HOST / REDIS_PASSWORD 环境变量注入）
+  # 本地开发说明：Redis 跑在 WSL2 (Ubuntu) 里，WSL2 默认开启 localhost 端口转发，
+  # 所以 Windows 侧用 127.0.0.1 即可访问，不依赖 WSL 的动态内网 IP（重启后不会失效）。
+  redis:
+    host: ${REDIS_HOST:127.0.0.1}
+    port: ${REDIS_PORT:6379}
+    database: 0
+    password: ${REDIS_PASSWORD:123456}
+  # session 失效时间 & 存储方式（存到 Redis，实现分布式 Session）
+  session:
+    store-type: redis
+    timeout: 86400
+  # 文件上传大小限制
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: false
+  global-config:
+    db-config:
+      logic-delete-field: isDelete # 全局逻辑删除的实体字段名(since 3.3.0,配置后可以忽略不配置步骤2)
+      logic-delete-value: 1 # 逻辑已删除值(默认为 1)
+      logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)
+
+# 阿里云 OSS 配置（AccessKey 从环境变量 OSS_ACCESS_KEY_ID / OSS_ACCESS_KEY_SECRET 读取）
+aliyun:
+  oss:
+    endpoint: oss-cn-shenzhen.aliyuncs.com
+    bucket-name: usermatchsystem
+

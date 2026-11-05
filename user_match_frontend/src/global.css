@@ -1,0 +1,18 @@
+/* ==========================================================================
+   全局共享工具类（跨页面复用）
+   ========================================================================== */
+
+/* 页面容器：统一背景 + 底部留白，避开底部 tabbar */
+.page-container {
+  min-height: 100vh;
+  background: var(--color-bg);
+  padding-bottom: 24px;
+}
+
+/* 卡片：白底 + 细边框 + 轻抬升（极简风格，不用重阴影） */
+.surface-card {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+}

@@ -1,0 +1,14 @@
+# 线上配置文件
+# 连接信息与密钥一律通过环境变量注入，仓库中禁止硬编码任何生产凭证。
+spring:
+  # DataSource Config
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3306}/${MYSQL_DB:user_match_db}?useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+    username: ${MYSQL_USER:root}
+    password: ${MYSQL_PASSWORD}
+  # session 失效时间
+  session:
+    timeout: 86400
+server:
+  address: 0.0.0.0

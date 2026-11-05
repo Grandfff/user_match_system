@@ -1,0 +1,107 @@
+/* ==========================================================================
+   全局设计系统 —— 极简黑白 + 珊瑚橙点缀
+   颜色 token、Vant 主题覆盖、基础样式
+   ========================================================================== */
+
+:root {
+  /* 品牌色 —— 珊瑚橙 */
+  --color-primary: #ff6b6b;
+  --color-primary-deep: #ff4757;
+  --color-primary-light: #fff0f0;
+
+  /* 文字层级 */
+  --color-text: #1a1a1a;
+  --color-text-2: #8a8a8e;
+  --color-text-3: #c0c0c4;
+
+  /* 背景 & 卡片 & 边框 */
+  --color-bg: #fafafa;
+  --color-card: #ffffff;
+  --color-border: #ededed;
+
+  /* 渐变 —— 仅用于品牌高亮元素 */
+  --gradient-primary: linear-gradient(135deg, #ff6b6b 0%, #ff8e53 100%);
+
+  /* 圆角 & 阴影（克制：细边框为主，阴影仅做轻微抬升） */
+  --radius-card: 12px;
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.03);
+
+  /* ===== Vant 4 主题变量覆盖（primaryColor / activeColor / tabbarItemActiveColor 已由 ConfigProvider 接管） ===== */
+  --van-danger-color: #f43f5e;
+  --van-warning-color: #ff9f43;
+  --van-success-color: #2ed573;
+  --van-text-color: #1a1a1a;
+  --van-text-color-2: #8a8a8e;
+  --van-text-color-3: #c0c0c4;
+  --van-background: #fafafa;
+  --van-background-2: #ffffff;
+  --van-border-color: #ededed;
+  --van-nav-bar-icon-color: #1a1a1a;
+  --van-nav-bar-text-color: #1a1a1a;
+  --van-nav-bar-title-text-color: #1a1a1a;
+
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC",
+    "Helvetica Neue", "Microsoft YaHei", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color-scheme: light;
+}
+
+/* ===== 全局基础 ===== */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-tap-highlight-color: transparent;
+}
+
+#app {
+  width: 100%;
+  min-height: 100vh;
+  background: var(--color-bg);
+}
+
+/* 图片默认块级，避免底部空隙 */
+img {
+  display: block;
+}
+
+/* ==========================================================================
+   Vant Toast 毛玻璃效果
+   ========================================================================== */
+.van-toast {
+  background: rgba(0, 0, 0, 0.45) !important;
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+}
+
+/* Toast 文字颜色保持白色，确保在毛玻璃背景上可读 */
+.van-toast__text {
+  color: #fff !important;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Loading 类型：loading 图标白色 */
+.van-toast--loading .van-loading {
+  color: #fff !important;
+}
+
+/* Success / Fail 图标保持白色 */
+.van-toast .van-icon {
+  color: #fff !important;
+}

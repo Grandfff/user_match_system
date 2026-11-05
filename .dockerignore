@@ -1,0 +1,13 @@
+# 镜像构建上下文中不需要的文件，减小上下文体积、加快构建
+.git
+.gitignore
+.idea
+.vscode
+**/node_modules
+user_match_frontend
+deploy/.env
+部署
+用户匹配系统MD
+*.zip
+*.log
+*.md

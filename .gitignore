@@ -1,0 +1,68 @@
+# ============================================================
+# LinkDot 用户匹配系统 — 仓库忽略规则
+# 原则：只提交源码与编排文件；构建产物、依赖、密钥、私有资料一律不入库
+# ============================================================
+
+# ---------- 依赖与构建产物 ----------
+node_modules/
+dist/
+dist-ssr/
+target/
+build/
+out/
+*.class
+*.jar
+*.war
+!**/.mvn/wrapper/maven-wrapper.jar
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ---------- 运行时日志与崩溃转储 ----------
+logs/
+*.log
+hs_err_pid*
+replay_pid*
+*.pid
+
+# ---------- 环境变量 / 密钥（严禁入库）----------
+.env
+.env.local
+.env.*.local
+deploy/.env
+*.pem
+*.key
+*.p12
+*.jks
+*.keystore
+
+# ---------- 私有资料：服务器凭证、部署记录、开发笔记、打包备份 ----------
+# 部署/ 内含服务器账号密码、OSS 密钥等敏感信息，绝不可提交
+部署/
+用户匹配系统MD/
+*.zip
+*.tar.gz
+*.7z
+
+# ---------- IDE / 编辑器 ----------
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+.settings/
+.classpath
+.project
+*.suo
+
+# ---------- 操作系统 ----------
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ---------- 临时文件 ----------
+*.tmp
+*.bak
+*.orig
+*.rej
+~$*
